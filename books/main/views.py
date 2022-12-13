@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from django.db.models import Q
+# from django.db.models import Q
 from faker import Faker
 import random
 
