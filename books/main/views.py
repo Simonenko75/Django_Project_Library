@@ -1,36 +1,36 @@
 # from django.http import HttpResponse
 from django.shortcuts import render, redirect
 # from django.db.models import Q
-from faker import Faker
-import random
+# from faker import Faker
+# import random
 
 from .models import Book
 from .forms import BookForm
 
 
-def new_book(request):
-    n = request.GET.get('numbers')
-    fake = Faker()
-
-    for i in range(int(n)):
-        a = fake.name()
-        ttl = fake.sentences(1)[0]
-        txt = ' '.join(fake.sentences(3))
-        pub = fake.year()
-        c = random.randint(1, 20)
-
-        obj = Book.objects.create(
-            title=ttl,
-            author=a,
-            text=txt,
-            published=pub,
-            count=c
-        )
-        obj.save()
-
-    books = Book.objects.order_by('-id')
-
-    return render(request, 'main/index.html', {'title': 'Головна сторінка', 'books': books})
+# def new_book(request):
+#     n = request.GET.get('numbers')
+#     fake = Faker()
+#
+#     for i in range(int(n)):
+#         a = fake.name()
+#         ttl = fake.sentences(1)[0]
+#         txt = ' '.join(fake.sentences(3))
+#         pub = fake.year()
+#         c = random.randint(1, 20)
+#
+#         obj = Book.objects.create(
+#             title=ttl,
+#             author=a,
+#             text=txt,
+#             published=pub,
+#             count=c
+#         )
+#         obj.save()
+#
+#     books = Book.objects.order_by('-id')
+#
+#     return render(request, 'main/index.html', {'title': 'Головна сторінка', 'books': books})
 
 
 def index(request):
