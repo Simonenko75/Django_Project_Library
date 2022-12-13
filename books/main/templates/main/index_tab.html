@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Main
+{% endblock %}
+
+{% block content %}
+
+<h2>Усі книжки нашого проекту "Бібліотека".</h2>
+
+<table class="table">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Опис</th>
+            <th scope="col">Кількість</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% if books %}
+    {% for elem in books %}
+        <tr>
+            <th scope="row">{{elem.id}}</th>
+            <td>{{elem.title}}</td>
+            <td>{{elem.author}}</td>
+            <td>{{elem.text|truncatewords:7}}</td>
+<!--            <td>{{elem.text|truncatechars:51}}</td>-->
+            <td>{{elem.count}}</td>
+
+            <td>
+                <a type="button" class="btn btn-info btn-sm" href="/book/{{elem.id}}/view">
+                    <img src="https://cdn-icons-png.flaticon.com/512/64/64673.png" width="24" height="24">
+                </a>
+            </td>
+
+            <td>
+                <a type="button" class="btn btn-warning btn-sm" href="/book/{{elem.id}}/edit">
+                    <img src="https://cdn-icons-png.flaticon.com/512/32/32355.png" width="24" height="24">
+                </a>
+            </td>
+
+            <td>
+                <a type="button" class="btn btn-danger btn-sm" href="/book/{{elem.id}}/delete">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1345/1345874.png" width="24" height="24">
+                </a>
+            </td>
+        </tr>
+
+    {% endfor %}
+    {% else %}
+        <p>Наразі обрані книжки відсутні в каталозі...</p>
+    {% endif %}
+    </tbody>
+
+</table>
+{% endblock %}
