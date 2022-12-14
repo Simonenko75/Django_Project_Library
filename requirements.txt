@@ -1,5 +1,6 @@
 ﻿asgiref==3.4.1
 certifi==2022.12.7
+charset-normalizer==2.0.12
 Django==3.2.16
 Faker==14.2.1
 idna==3.4
